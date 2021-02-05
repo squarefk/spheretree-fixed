@@ -4,3 +4,10 @@ config.log
 config.status
 libtool
 .idea/
+*.lo
+*.o
+*.la
+autom4te.cache/
+.libs/
+aclocal.m4
+configure/

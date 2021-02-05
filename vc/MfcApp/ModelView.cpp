@@ -252,7 +252,7 @@ void CModelView::drawObject(bool sel){
       //  draw edges
       glColor3f(0, 0, 1);
       glBegin(GL_TRIANGLES);
-      for (i = 0; i < numTris; i++){
+      for (int i = 0; i < numTris; i++){
         Surface::Triangle *tri = &tris->index(i);
 
         for (int j = 0; j < 3; j++){

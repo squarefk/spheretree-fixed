@@ -218,7 +218,7 @@ int simplexMin(int numDim, double init[], double size[], double ftol, int *maxFu
   memcpy(init, p[0], numDim*sizeof(double));
 
   //  tidy up
-  for (i = 0; i <= numDim; i++)
+  for (int i = 0; i <= numDim; i++)
     delete p[i];
   delete p;
   delete y;

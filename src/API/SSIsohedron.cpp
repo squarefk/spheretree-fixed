@@ -66,7 +66,7 @@ void SSIsohedron::generateSamples(Array<Point3D> *pts, int levels){
     }
 
   //  construct by recursive sub division
-  for (i = 0; i < 20; i++) 
+  for (int i = 0; i < 20; i++)
     subDivideIso(pts, tindices[i][0], tindices[i][1], tindices[i][2], levels-1);
 }
 

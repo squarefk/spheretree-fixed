@@ -150,7 +150,7 @@ bool saveOBJ(Surface &sur, const char *fileName, float scale){
 
   //  write out the triangle
   int numTri = sur.triangles.getSize();
-  for (i = 0; i < numTri; i++){
+  for (int i = 0; i < numTri; i++){
     const Surface::Triangle *tri = &sur.triangles.index(i);
 
     fprintf(f, "f ");

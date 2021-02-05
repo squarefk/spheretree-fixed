@@ -78,7 +78,7 @@ double geo_solid_angle (const Point3D &pTest, const Point3D p[3]){
   Vector3D a;
   a.difference(p2, p1);
 
-  for (i = 0; i < 3; i++){
+  for (int i = 0; i < 3; i++){
     r1.difference(pTest, p1);
     p2 = p[(i+1)%3];
     b.difference(p2, p1);

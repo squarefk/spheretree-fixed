@@ -99,7 +99,7 @@ void MergeHubbard::constructSphereSet(Array<MedialSphere> *medialSpheres, const 
   if (filterInds)
     numToDo = filterInds->getSize();
 
-  for (i = 0; i < numToDo; i++){
+  for (int i = 0; i < numToDo; i++){
     int vI = i;
     if (filterInds)
       vI = filterInds->index(i);
@@ -128,7 +128,7 @@ void MergeHubbard::constructSphereSet(Array<MedialSphere> *medialSpheres, const 
     }
 
   //  setup neighbour information
-  for (i = 0; i < numVert; i++){
+  for (int i = 0; i < numVert; i++){
     int mapsTo = vertexToSphereMap.index(i);
     if (mapsTo >= 0){
       //  get data structures
@@ -148,7 +148,7 @@ void MergeHubbard::constructSphereSet(Array<MedialSphere> *medialSpheres, const 
 
   //  make sure to give neighbourless spheres some company
   numSpheres = medialSpheres->getSize();
-  for (i = 0; i < numSpheres; i++){
+  for (int i = 0; i < numSpheres; i++){
     MedialSphere *medSph = &medialSpheres->index(i);
     if (medSph->neighbours.getSize() == 0){
       //  add any other sphere which we overlap

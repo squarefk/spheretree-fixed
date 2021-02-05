@@ -314,8 +314,8 @@ NRprmat(ulong rows, ulong cols, float** matrix, bool isone)
     for (ulong ii=0; ii<rows; ii++)
     {
 	for (ulong jj=0; jj<cols; jj++)
-	    cout << matrix[ii+off][jj+off] << " ";
-	cout << endl;
+	    std::cout << matrix[ii+off][jj+off] << " ";
+	std::cout << std::endl;
     }
 }
 #endif
@@ -832,8 +832,8 @@ EnclosingBall(ulong num_dim, ulong num_points,
 	if (curr_level==0 && bound_size>1 && bound_elem[0]!=old_first_elem)
 	{
 	    for (ii=0; ii<bound_size; ii++)
-		cout << bound_elem[ii] << " ";
-	    cout << endl;
+		std::cout << bound_elem[ii] << " ";
+	    std::cout << std::endl;
 	    old_first_elem = bound_elem[0];
 	}
 #endif

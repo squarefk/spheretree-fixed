@@ -44,7 +44,7 @@ char HitBoundingBox(double minB[NUMDIM], double maxB[NUMDIM],   //  BOX
 
 
 	/* Calculate T distances to candidate planes */
-	for (i = 0; i < NUMDIM; i++)
+	for (int i = 0; i < NUMDIM; i++)
 		if (quadrant[i] != MIDDLE && dir[i] !=0.)
 			maxT[i] = (candidatePlane[i]-origin[i]) / dir[i];
 		else
@@ -58,7 +58,7 @@ char HitBoundingBox(double minB[NUMDIM], double maxB[NUMDIM],   //  BOX
 
 	/* Check final candidate actually inside box */
 	if (maxT[whichPlane] < 0.) return (FALSE);
-	for (i = 0; i < NUMDIM; i++)
+	for (int i = 0; i < NUMDIM; i++)
 		if (whichPlane != i) {
 			coord[i] = origin[i] + maxT[whichPlane] *dir[i];
 			if (coord[i] < minB[i] || coord[i] > maxB[i])

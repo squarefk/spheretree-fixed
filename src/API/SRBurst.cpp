@@ -87,7 +87,7 @@ void SRBurst::getSpheres(Array<Sphere> *spheres, int numDest, const SurfaceRep &
     coverRep = &localCoverPts;
 
     //  replace point indices for the medial spheres
-    for (i = 0; i < numSpheres; i++){
+    for (int i = 0; i < numSpheres; i++){
       //  get medial sphere
       MedialSphere *ms = &medialSpheres.index(i);
 
@@ -233,7 +233,7 @@ float SRBurst::costOfRemoval(SphereRemove &removal, const Array<MedialSphere> &m
 
   //  add the rest of the errors
 /*  int numSph = medialSpheres.getSize();  //  TEMP  --  only count updated spheres
-  for (i = 0; i < numSph; i++){
+  for (int i = 0; i < numSph; i++){
     float err = medialSpheres.index(i).error;
     sumAllErr += COST_FN(err);
     }*/
@@ -331,7 +331,7 @@ void SRBurst::applyRemoval(Array<SphereRemove> *removals, Array<MedialSphere> *m
     }
 
   //  update bounding spheres
-  for (i = 0; i < numSph; i++){
+  for (int i = 0; i < numSph; i++){
     if (update.index(i)){
       MedialSphere *uS = &medialSpheres->index(i);
 
@@ -342,7 +342,7 @@ void SRBurst::applyRemoval(Array<SphereRemove> *removals, Array<MedialSphere> *m
 
   if (updateHouseKeeping){
     //  remove myself from my neighbours
-    for (i = 0; i < numNeigh; i++){
+    for (int i = 0; i < numNeigh; i++){
       int neighNum = medSph->neighbours.index(i);
       Array<int> *neigh = &medialSpheres->index(neighNum).neighbours;
       int num = neigh->getSize();
@@ -358,7 +358,7 @@ void SRBurst::applyRemoval(Array<SphereRemove> *removals, Array<MedialSphere> *m
       }
 
     //  connect my neighbours as neighbours
-    for (i = 0; i < numNeigh; i++){
+    for (int i = 0; i < numNeigh; i++){
       int s1Num = medSph->neighbours.index(i);
       MedialSphere *s1 = &medialSpheres->index(s1Num);
       CHECK_DEBUG(s1->valid, "applyRemoval : i have an invalid neighbour");
@@ -383,7 +383,7 @@ void SRBurst::applyRemoval(Array<SphereRemove> *removals, Array<MedialSphere> *m
       }
 
     //  removals for neighbours of neighbours will also have to be updated
-    for (i = 0; i < numNeigh; i++){
+    for (int i = 0; i < numNeigh; i++){
       int nI = medSph->neighbours.index(i);
 
       if (update.index(nI)){
@@ -401,7 +401,7 @@ void SRBurst::applyRemoval(Array<SphereRemove> *removals, Array<MedialSphere> *m
     checkNoNeighbours(medialSpheres);
 
     //  do updates
-    for (i = 0; i < numSph; i++){
+    for (int i = 0; i < numSph; i++){
       if (update.index(i)){
         CHECK_DEBUG(medialSpheres->index(i).valid, "applyRemoval : trying to update an invalid sphere");
         SphereRemove *sr = &removals->index(i);
@@ -426,7 +426,7 @@ void SRBurst::makeAllNeighbours(Array<SphereRemove> *removals, Array<MedialSpher
     medialSpheres->index(i).neighbours.setSize(0);
 
   //  setup new neighbours
-  for (i = 0; i < numSph; i++){
+  for (int i = 0; i < numSph; i++){
     MedialSphere *s1 = &medialSpheres->index(i);
     if (!s1->valid)
       continue;
@@ -442,7 +442,7 @@ void SRBurst::makeAllNeighbours(Array<SphereRemove> *removals, Array<MedialSpher
       }
     }
 
-  for (i = 0; i < numSph; i++){
+  for (int i = 0; i < numSph; i++){
     if (medialSpheres->index(i).valid)
       constructRemoval(&removals->index(i), *medialSpheres, i, surPts);
     }

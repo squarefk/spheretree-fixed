@@ -177,7 +177,7 @@ bool SphereTree::saveSpheres(const Array<Sphere> &nodes, const char *fileName, f
 
   //  radius
   boundSphere.r = 0;
-  for (i = 0; i < numSph; i++){
+  for (int i = 0; i < numSph; i++){
     Sphere s = nodes.index(i);
     if (s.r > 0){
       float r = boundSphere.c.distance(s.c) + s.r;
@@ -198,7 +198,7 @@ bool SphereTree::saveSpheres(const Array<Sphere> &nodes, const char *fileName, f
   fprintf(f, "%f %f %f %f\n", boundSphere.c.x*scale, boundSphere.c.y*scale, boundSphere.c.z*scale, boundSphere.r*scale);
 
   //  one and only sub-level
-  for (i = 0; i < numSph; i++){
+  for (int i = 0; i < numSph; i++){
     Sphere s = nodes.index(i);
     if (s.r > 0)
       fprintf(f, "%f %f %f %f\n", s.c.x*scale, s.c.y*scale, s.c.z*scale, s.r*scale);

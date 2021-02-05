@@ -15,7 +15,7 @@
 
 #ifndef NDEBUG
 #include <iostream.h>
-#define WARN_MSG(str) cerr << str
+#define WARN_MSG(str) std::cerr << str
 #else
 #define WARN_MSG(str)
 #endif

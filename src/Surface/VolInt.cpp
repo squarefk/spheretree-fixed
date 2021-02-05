@@ -83,7 +83,7 @@ void compProjectionIntegrals(const Surface &sur, int face){
     double verts[3][3];
     }FACE;
   const Surface::Triangle *tri = &sur.triangles.index(face);
-  for (i = 0; i < 3; i++){
+  for (int i = 0; i < 3; i++){
     const Point3D *p = &sur.vertices.index(tri->v[i]).p;
     FACE.verts[i][0] = p->x;
     FACE.verts[i][1] = p->y;
@@ -91,7 +91,7 @@ void compProjectionIntegrals(const Surface &sur, int face){
     }
 
   //  do his stuff
-  for (i = 0; i < 3; i++) {
+  for (int i = 0; i < 3; i++) {
     a0 = FACE.verts[i][A];
     b0 = FACE.verts[i][B];
     a1 = FACE.verts[(i+1) % 3][A];
@@ -179,7 +179,7 @@ void compVolumeIntegrals(const Surface &sur){
      = TP[X] = TP[Y] = TP[Z] = 0;
 
   int numTri = sur.triangles.getSize();
-  for (i = 0; i < numTri ; i++) {
+  for (int i = 0; i < numTri ; i++) {
     Vector3D v;
     sur.getTriangleNormal(&v, i);
     double norm[3] = {v.x, v.y, v.z};

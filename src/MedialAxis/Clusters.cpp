@@ -156,7 +156,7 @@ void getClusterInfo(ClusterInfo *inf, const Surface &sur, float tol){
   for (int i = 0; i < numClusters; i++)
     inf->neighbours.index(i).setSize(0);
 
-  for (i = 0; i < numClusters; i++)
+  for (int i = 0; i < numClusters; i++)
     for (int j = i+1; j < numClusters; j++)
       if (areNeighbours(inf->clusters, sur, i, j)){
         inf->neighbours.index(i).addItem() = j;
