@@ -47,6 +47,21 @@ bool SphereTree::saveSphereTree(const char *fileName, float scale){
   if (!f)
     return false;
 
+  for (int lvl = 0; lvl < 4; ++lvl) {
+      Array<Sphere>* lvl_arr = new Array<Sphere>();
+      getLevel(lvl_arr, lvl);
+      fprintf(f, "%d\n", lvl_arr->getSize());
+      int num = lvl_arr->getSize();
+      for (int i = 0; i < num; i++){
+          STSphere *s = &lvl_arr->index(i);        //  NOW SAVING OCCUPANCY - need to do loading too sometime
+          fprintf(f, "%f %f %f %f %f", s->c.x*scale, s->c.y*scale, s->c.z*scale, s->r*scale, s->occupancy);
+          if (s->hasAux)
+              fprintf(f, " %f %f %f %f %f", s->sAux.c.x*scale, s->sAux.c.y*scale, s->sAux.c.z*scale, s->sAux.r*scale, s->errDec);
+          fprintf(f, "\n");
+      };
+      delete nodes;
+  }
+
   fprintf(f, "%d %d\n", levels, degree);
   int numnodes = nodes.getSize();
   for (int i = 0; i < numnodes; i++){
