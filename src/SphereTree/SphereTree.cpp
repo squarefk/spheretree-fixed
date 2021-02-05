@@ -47,6 +47,42 @@ bool SphereTree::saveSphereTree(const char *fileName, float scale){
   if (!f)
     return false;
 
+  Array<Sphere>* l1 = new Array<Sphere>();
+  Array<Sphere>* l2 = new Array<Sphere>();
+  Array<Sphere>* l3 = new Array<Sphere>();
+  getLevel(Array<Sphere> *l1, 1);
+  getLevel(Array<Sphere> *l2, 2);
+  getLevel(Array<Sphere> *l3, 3);
+  fprintf();
+  int num1 = l1.getSize();
+  fprintf(f, "%d\n", (int)num1);
+  for (int i = 0; i < num1; ++i){
+      STSphere *s = &l1->index(i);        //  NOW SAVING OCCUPANCY - need to do loading too sometime
+      fprintf(f, "%f %f %f %f %f", s->c.x*scale, s->c.y*scale, s->c.z*scale, s->r*scale, s->occupancy);
+      if (s->hasAux)
+          fprintf(f, " %f %f %f %f %f", s->sAux.c.x*scale, s->sAux.c.y*scale, s->sAux.c.z*scale, s->sAux.r*scale, s->errDec);
+      fprintf(f, "\n");
+  }
+  int num2 = l2.getSize();
+  fprintf(f, "%d\n", (int)num2);
+  for (int i = 0; i < num2; ++i){
+      STSphere *s = &l2->index(i);        //  NOW SAVING OCCUPANCY - need to do loading too sometime
+      fprintf(f, "%f %f %f %f %f", s->c.x*scale, s->c.y*scale, s->c.z*scale, s->r*scale, s->occupancy);
+      if (s->hasAux)
+          fprintf(f, " %f %f %f %f %f", s->sAux.c.x*scale, s->sAux.c.y*scale, s->sAux.c.z*scale, s->sAux.r*scale, s->errDec);
+      fprintf(f, "\n");
+  }
+  int num3 = l3.getSize();
+  fprintf(f, "%d\n", (int)num3);
+  for (int i = 0; i < num3; ++i){
+      STSphere *s = &l1->index(i);        //  NOW SAVING OCCUPANCY - need to do loading too sometime
+      fprintf(f, "%f %f %f %f %f", s->c.x*scale, s->c.y*scale, s->c.z*scale, s->r*scale, s->occupancy);
+      if (s->hasAux)
+          fprintf(f, " %f %f %f %f %f", s->sAux.c.x*scale, s->sAux.c.y*scale, s->sAux.c.z*scale, s->sAux.r*scale, s->errDec);
+      fprintf(f, "\n");
+  }
+
+
   fprintf(f, "%d %d\n", levels, degree);
   int numnodes = nodes.getSize();
   for (int i = 0; i < numnodes; i++){
