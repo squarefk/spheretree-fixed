@@ -1,0 +1,10 @@
+.idea/
+*.o
+*.lo
+*.la
+.libs/
+config.log
+config.cache
+config.status
+libtool
+Makefile
